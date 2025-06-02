@@ -2,7 +2,7 @@
 
 # joker
 
-A gleam library for fetching jokes from the [![JokeAPI] (https://sv443.net/jokeapi/v2) service.
+A gleam library for fetching jokes from the [JokeAPI] (https://sv443.net/jokeapi/v2) service.
 
 This library provides a simple interface to retrieve jokes from the JokeAPI (v2.jokeapi.dev), with built-in error handling and type-safe JSON decoding. It supports fetching random jokes with detailed metadata including categories, content flags, and safety ratings.
 
