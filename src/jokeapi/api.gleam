@@ -21,8 +21,8 @@ pub type JokeResponse {
     safe: Bool,
     lang: String,
     type_: String,
-    setup: String,
-    delivery: String,
+    // setup: String,
+    // delivery: String,
     error: Bool,
   )
 }
@@ -97,8 +97,8 @@ pub fn api_decoder(in: String) -> Result(JokeResponse, APIError) {
     use safe <- decode.field("safe", decode.bool)
     use lang <- decode.field("lang", decode.string)
     use type_ <- decode.field("type", decode.string)
-    use setup <- decode.field("setup", decode.string)
-    use delivery <- decode.field("delivery", decode.string)
+    //use setup <- decode.field("setup", decode.string)
+    //use delivery <- decode.field("delivery", decode.string)
     use error <- decode.field("error", decode.bool)
     decode.success(JokeResponse(
       id: id,
@@ -107,8 +107,8 @@ pub fn api_decoder(in: String) -> Result(JokeResponse, APIError) {
       safe: safe,
       lang: lang,
       type_: type_,
-      setup: setup,
-      delivery: delivery,
+      // setup: setup,
+      // delivery: delivery,
       error: error,
     ))
   }
@@ -177,8 +177,6 @@ pub fn display_joke(joke: JokeResponse) -> Nil {
     <> " JOKE #"
     <> int.to_string(joke.id),
   )
-  io.println("❓ " <> joke.setup)
-  io.println("💡 " <> joke.delivery)
   display_metadata(joke.flags, joke.lang, joke.safe)
 }
 
