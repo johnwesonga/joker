@@ -17,6 +17,8 @@ pub type JokeResponse {
   JokeResponse(
     id: Int,
     category: String,
+    setup: String,
+    delivery: String,
     flags: Flags,
     safe: Bool,
     lang: String,
@@ -96,6 +98,8 @@ pub fn api_decoder(in: String) -> Result(JokeResponse, APIError) {
     use lang <- decode.field("lang", decode.string)
     use type_ <- decode.field("type", decode.string)
     use error <- decode.field("error", decode.bool)
+    use setup <- decode.field("setup", decode.string)
+    use delivery <- decode.field("delivery", decode.string)
     decode.success(JokeResponse(
       id: id,
       category: category,
@@ -104,6 +108,8 @@ pub fn api_decoder(in: String) -> Result(JokeResponse, APIError) {
       lang: lang,
       type_: type_,
       error: error,
+      setup: setup,
+      delivery: delivery,
     ))
   }
   json.parse(in, main_decoder)
@@ -170,6 +176,10 @@ pub fn display_joke(joke: JokeResponse) -> Nil {
     <> string.uppercase(joke.category)
     <> " JOKE #"
     <> int.to_string(joke.id)
+    <> " | "
+    <> joke.setup
+    <> " | "
+    <> joke.delivery
   io.println(header)
   display_metadata(joke.flags, joke.lang, joke.safe)
 }
