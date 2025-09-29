@@ -13,6 +13,9 @@ import gleam/uri
 const base_url = "https://v2.jokeapi.dev/joke/"
 
 /// Represents a joke response from the JokeAPI.
+// Not all fields are always present, depending on the type of joke.
+
+/// For simplicity, this type includes fields for both single and two-part jokes.
 pub type JokeResponse {
   JokeResponse(
     id: Int,
